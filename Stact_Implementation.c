@@ -6,6 +6,8 @@ void push();
 void peek();
 void pop();
 void display();
+int  isEmpty();
+int  isFull();
 
 int a[n],top=-1;
 
@@ -37,8 +39,8 @@ void main(){
 
 void peek(){
     
-    if(top==-1){
-        printf("Stack is empty\n");
+    if(isEmpty()){
+        printf("Stack Underflow\n");
     }else{
         printf("The top elem is %d\n",a[top]);
     }
@@ -46,21 +48,22 @@ void peek(){
 }
 
 void push(){
-    if(top==n-1){
-        printf("Stack is full\n");
+    if(isFull()){
+        printf("Stack Overflow\n");
     }else{
         int hold;
         printf("Enter the elem\n");
         scanf("%d",&hold);
         top++;
         a[top] = hold;
+        printf("Entered element was %d\n",a[top]);
     }
 }
 
 void pop(){
     
-    if(top==-1){
-        printf("Stack is empty\n");
+    if(isEmpty()){
+         printf("Stack Underflow\n");
     }else{
         
         printf("The popped elem is %d\n",a[top]);
@@ -72,11 +75,11 @@ void pop(){
 
 void display(){
     
-    if(top==-1){
-        printf("Stack is empty\n");
+    if(isEmpty()){
+       printf("Stack Underflow\n");
     }else{
         
-       for(int i = 0;i<n;i++){
+       for(int i = top;i>=0;i--){
            printf("%d ",a[i]);
        }
         
@@ -85,6 +88,23 @@ void display(){
     
 }
 
+int isFull(){
+
+    if(top == n-1){
+       return 1;
+    }else{
+        return 0;
+    }
+}
+
+int isEmpty(){
+
+    if(top == -1){
+        return 1;
+    }else{
+        return 0;
+    }
+}
 
 
 
